@@ -34,22 +34,22 @@ export default function LoginScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar />
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
-          <Text style={styles.title}>EduCloud360</Text>
+          <Text style={styles.title}>Parent Login</Text>
           <Text style={styles.subTitle}>
             Please sign in to your existing account
           </Text>
         </View>
 
-        <View style={styles.form}>
-          <View>
+        <View>
+          <View style={styles.unameCont}>
             <Text style={styles.inputText}>Username</Text>
             <TextInput
               style={styles.inputField}
               value={formData.username}
               onChangeText={(value) => handleChange("username", value)}
-              placeholder="username"
+              placeholder="Username"
               autoCapitalize="none"
               autoCorrect={false}
               maxLength={16}
@@ -83,8 +83,8 @@ export default function LoginScreen() {
               >
                 <Ionicons
                   name={showPassword ? "eye" : "eye-off"}
-                  size={25}
-                  color="grey"
+                  size={24}
+                  color="black"
                 />
               </TouchableOpacity>
             </View>
@@ -95,7 +95,7 @@ export default function LoginScreen() {
         </TouchableOpacity>
 
         <Pressable>
-          <Text>
+          <Text style={styles.signup}>
             Don't have an account? <Text style={styles.signupTxt}>Sign up</Text>
           </Text>
         </Pressable>
@@ -105,13 +105,14 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  contentContainer: {
     flex: 1,
     padding: 24,
-    backgroundColor: "#f2f3f4",
+    backgroundColor: "#ffffff",
+    justifyContent: "center",
   },
   header: {
-    marginVertical: 36,
+    marginBottom: 30,
   },
   headerImg: {
     height: 100,
@@ -121,21 +122,24 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   title: {
-    fontSize: 30,
+    fontSize: 26,
     fontWeight: "bold",
     textAlign: "center",
   },
   subTitle: {
-    fontSize: 17,
+    fontSize: 16,
     textAlign: "center",
     color: "grey",
   },
   inputField: {
     height: 50,
     borderRadius: 10,
-    backgroundColor: "white",
+    backgroundColor: "#f1f5f5",
     padding: 10,
     marginVertical: 5,
+  },
+  unameCont: {
+    marginBottom: 15,
   },
   inputText: {
     fontSize: 18,
@@ -152,7 +156,8 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    marginVertical: 15,
+    marginTop: 30,
+    marginBottom: 10,
     backgroundColor: "red",
     height: 50,
     borderRadius: 10,
@@ -163,6 +168,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
+  },
+  signup: {
+    fontSize: 16,
   },
   signupTxt: {
     textDecorationLine: "underline",
