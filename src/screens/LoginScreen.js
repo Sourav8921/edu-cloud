@@ -13,7 +13,7 @@ import {
 import { useRef, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   const firstRef = useRef(null);
   const secondRef = useRef(null);
 
@@ -90,7 +90,7 @@ export default function LoginScreen() {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Home")}>
           <Text style={styles.btnText}>Login</Text>
         </TouchableOpacity>
 

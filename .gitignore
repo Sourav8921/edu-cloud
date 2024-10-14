@@ -37,13 +37,10 @@ yarn-error.*
 
 # Additional entries for React Native projects
 # Android
-android/.gradle
-android/app/build
-android/build
+/android
 
 # iOS
-ios/Pods
-ios/build
+/ios
 
 # IDEs and editors
 .idea/
