@@ -6,14 +6,14 @@ import {
   TextInput,
   TouchableOpacity,
   Pressable,
-  ScrollView,
   StatusBar,
   SafeAreaView,
+  Alert,
 } from "react-native";
 import { useRef, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function LoginScreen({navigation}) {
+export default function LoginScreen({ navigation }) {
   const firstRef = useRef(null);
   const secondRef = useRef(null);
 
@@ -31,17 +31,22 @@ export default function LoginScreen({navigation}) {
     });
   };
 
+  const handleLogin = () => {
+    if (formData.username === "sourav" && formData.password === "1234") {
+      navigation.navigate("Home");
+    } else {
+      Alert.alert("Please try again", "Username or password entered is wrong.");
+    }
+  };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.container}>
       <StatusBar />
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Parent Login</Text>
-          <Text style={styles.subTitle}>
-            Please sign in to your existing account
-          </Text>
-        </View>
-
+      <View style={styles.headerSection}></View>
+      <View style={styles.contentContainer}>
+        <Text style={styles.title}>Parent Login</Text>
+        <Text style={styles.subTitle}>
+          Please login to your existing account
+        </Text>
         <View>
           <View style={styles.unameCont}>
             <Text style={styles.inputText}>Username</Text>
@@ -90,7 +95,7 @@ export default function LoginScreen({navigation}) {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Home")}>
+        <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
           <Text style={styles.btnText}>Login</Text>
         </TouchableOpacity>
 
@@ -99,20 +104,28 @@ export default function LoginScreen({navigation}) {
             Don't have an account? <Text style={styles.signupTxt}>Sign up</Text>
           </Text>
         </Pressable>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
+  container: {
     flex: 1,
+    backgroundColor: "rgb(96 165 250)",
+  },
+  headerSection: {
+    flex: 1,
+  },
+  contentContainer: {
+    flex: 4,
     padding: 24,
     backgroundColor: "#ffffff",
-    justifyContent: "center",
+    borderTopEndRadius: 50,
+    borderTopStartRadius: 50,
   },
   header: {
-    marginBottom: 30,
+    // marginBottom: 30,
   },
   headerImg: {
     height: 100,
@@ -130,6 +143,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "center",
     color: "grey",
+    marginBottom: 30,
   },
   inputField: {
     height: 50,
@@ -149,7 +163,7 @@ const styles = StyleSheet.create({
     color: "red",
   },
   eyeBtn: {
-    position: 'absolute',
+    position: "absolute",
     padding: 8,
     right: 8,
     bottom: 8,
@@ -158,7 +172,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 30,
     marginBottom: 10,
-    backgroundColor: "red",
+    backgroundColor: "rgb(96 165 250)",
     height: 50,
     borderRadius: 10,
     padding: 10,
@@ -174,6 +188,6 @@ const styles = StyleSheet.create({
   },
   signupTxt: {
     textDecorationLine: "underline",
-    color: "red",
+    color: "rgb(37 99 235)",
   },
 });
