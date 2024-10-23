@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 32,
   },
   headerTitle: {
     color: "white",
