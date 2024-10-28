@@ -23,7 +23,7 @@ export default function HomeScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       <ImageBackground
-        source={require("../../assets/school-img.jpg")}
+        source={require("../../assets/images/school-img.jpg")}
         imageStyle={{ opacity: 0.1 }}
         style={styles.header}
       >
@@ -47,7 +47,7 @@ export default function HomeScreen({ navigation }) {
 
       <View style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={styles.gridContainer}>
-          <TouchableOpacity style={styles.gridItem}>
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')} style={styles.gridItem}>
             <View style={[styles.iconContainer, styles.blueBackground]}>
               <Ionicons name="person-outline" size={40} color="blue" />
             </View>
